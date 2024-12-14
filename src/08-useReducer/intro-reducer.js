@@ -4,7 +4,7 @@ const initialState = [{
     done: false
 }];
 
-const todoReducer = (state = initialState, action = 'none') =>{
+const todoReducer = (state = initialState, action = {}) =>{
     switch(action.type){
         case 'ADD':
             return[...state, action.payload]
