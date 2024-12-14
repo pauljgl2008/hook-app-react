@@ -38,6 +38,8 @@ export const useTodos = () => {
         todos,
         handledNewTodo,
         handledDeteleTodo,
-        handleToggleTodo
+        handleToggleTodo,
+        todosCount: todos.length,
+        pendingTodosCount: todos.filter(todo=> !todo.done).length
     }
 }
