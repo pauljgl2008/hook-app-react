@@ -4,23 +4,24 @@ const initialState = [{
     done: false
 }];
 
-const todoReducer = (state = initialState, action = {}) =>{
-    switch(action.type){
+const todoReducer = (state = initialState, action = {}) => {
+    switch (action.type) {
         case 'ADD':
-            return[...state, action.payload]
+            return [...state, action.payload]
         default:
             return state;
     }
 }
 
- let todos = todoReducer();
+let todos = todoReducer();
+
 const newTodo = {
     id: 2,
     todo: 'Recolectar la piedra del poder',
     done: false
 }
 
-const addTodoAction ={
+const addTodoAction = {
     type: 'ADD',
     payload: newTodo
 }
