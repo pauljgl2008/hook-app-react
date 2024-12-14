@@ -1,9 +1,19 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
+import { useLayoutEffect } from 'react';
 
 export const PokemonCard = ({ id, name, sprites = [] }) => {
+    const h2Ref = useRef();
+
+    const [boxSize, setBoxSize] = useState({ width: 0, height: 0 })
+
+    useLayoutEffect(() => {
+        const { height, width } = h2Ref.current.getBoundingClientRect();
+        setBoxSize({ height, width });
+    }, [name])
+
     return (
-        <section style={{ height: 200 }}>
-            <h2 className='text-capitalize'>#{id} - {name}</h2>
+        <section style={{ height: 200, display: 'flex', flexDirection: 'row' }}>
+            <h2 ref={h2Ref} className='text-capitalize'>#{id} - {name}</h2>
             {/* Imágenes */}
             <div>
                 {
@@ -12,6 +22,9 @@ export const PokemonCard = ({ id, name, sprites = [] }) => {
                     ))
                 }
             </div>
+            <pre>
+                {JSON.stringify(boxSize)}
+            </pre>
         </section>
     )
 }
