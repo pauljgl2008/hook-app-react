@@ -36,6 +36,13 @@ export const TodoApp = () => {
         localStorage.setItem('todos', JSON.stringify(todos))
     }, [todos])
 
+    const handledDeteleTodo = (id) => {
+        dispatch({
+            type: 'REMOVE',
+            payload: id
+        })
+    }
+
     return (
         <>
             <h1>TodoApp: 10 <small>pendientes: 2 </small></h1>
@@ -43,7 +50,10 @@ export const TodoApp = () => {
             <div className="row">
                 <div className="col-7">
                     {/*TodoList */}
-                    <TodoList todos={todos} />
+                    <TodoList
+                        todos={todos}
+                        onDeleteTodo={handledDeteleTodo}
+                    />
                     {/**Fin TodoList */}
                 </div>
                 <div className="col-5">
@@ -52,7 +62,9 @@ export const TodoApp = () => {
                     <hr />
                     {/**TodoAdd onNewTodo*/}
                     {/**{id: new Date()..., description;'', done: false} */}
-                    <TodoAdd onNewTodo={handledNewTodo} />
+                    <TodoAdd
+                        onNewTodo={handledNewTodo}
+                    />
                     {/**Fin TodoAdd */}
                 </div>
             </div>
